@@ -1,20 +1,20 @@
 package com.github.algrom13.city_info_telegram_bot.service.impl;
 
 import com.github.algrom13.city_info_telegram_bot.model.City;
-import com.github.algrom13.city_info_telegram_bot.model.CityFact;
 import com.github.algrom13.city_info_telegram_bot.repository.CityRepository;
 import com.github.algrom13.city_info_telegram_bot.repository.entity.CityEntity;
-import com.github.algrom13.city_info_telegram_bot.repository.entity.CityFactEntity;
 import com.github.algrom13.city_info_telegram_bot.service.CityService;
 import com.github.algrom13.city_info_telegram_bot.service.convertor.CityConvertor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class CityServiceImpl implements CityService {
 
     private final CityRepository cityRepository;

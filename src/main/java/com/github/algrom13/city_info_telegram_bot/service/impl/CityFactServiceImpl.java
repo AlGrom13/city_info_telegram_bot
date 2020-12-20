@@ -11,11 +11,13 @@ import com.github.algrom13.city_info_telegram_bot.service.convertor.CityConverto
 import com.github.algrom13.city_info_telegram_bot.service.convertor.CityFactConvertor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class CityFactServiceImpl implements CityFactService {
 
     private CityRepository cityRepository;
@@ -106,7 +108,7 @@ public class CityFactServiceImpl implements CityFactService {
 
     private CityFactEntity findFactEntityById(Long id, List<CityFactEntity> cityFactEntityList) {
         return cityFactEntityList.stream()
-                .filter(cityFactEntity -> cityFactEntity.getId() == id)
+                .filter(cityFactEntity -> cityFactEntity.getId().equals(id))
                 .findFirst()
                 .orElse(null);
     }
